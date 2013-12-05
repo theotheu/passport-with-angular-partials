@@ -15,19 +15,19 @@ Change directory to the workspaces directory, eg ```/home/webdev/workspaces``` w
 
 Clone the repository with
 ```
-git clone https://theotheu@bitbucket.org/theotheu/test-app.git ~/workspaces/testapp
+git clone https://github.com/theotheu/passport-with-angular-partials.git ~/workspaces/passportDemo
 ```
 
 Go to the working directory
 ```
-cd ~/workspaces/testapp
+cd ~/workspaces/passportDemo
 ```
 
 Configuration
 ----------
 Copy ```config.js.default``` to ```config.js```.
 ```sh
-cp ~/workspaces/testapp/server/config/config.js.default ~/workspaces/testapp/server/config/config.js
+cp ~/workspaces/passportDemo/server/config/config.js.default ~/workspaces/passportDemo/server/config/config.js
 ```
 
 Change the database, port and emailaddress.
@@ -55,13 +55,13 @@ The archive is without the node modules.
 
 Install with
 ```sh
-cd ~/workspaces/testapp/server
+cd ~/workspaces/passportDemo/server
 npm install
 ```
 
 Import users
 ------------
-Go to directory data
+Go to directory ~/workspaces/passportDemo/data
 
 ```sh
 mongoimport -db p3000 --collection users --file users.js

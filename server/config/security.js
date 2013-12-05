@@ -1,13 +1,11 @@
 /**
- * Created by theotheu on 27-10-13.
+ * Created by theotheu on 05-12-13.
  */
 module.exports = function (app) {
     var mongoose = require('mongoose')
         , passport = require('passport')
         , flash = require('connect-flash')
-        , LocalStrategy = require('passport-local').Strategy
-        , passwordHash = require('password-hash')
-        , User = mongoose.model('User');
+        , LocalStrategy = require('passport-local').Strategy;
 
     function ensureAuthenticated(req, res, next) {
         if (req.isAuthenticated()) {
@@ -27,21 +25,7 @@ module.exports = function (app) {
     }
 
     passport.deserializeUser(function (id, done) {
-        User.findOne({ _id: id }, function (err, doc) {
-            if (err) {
-                return done(err);
-            }
-            if (!doc) {
-                return done(null, false, { message: 'Incorrect username.' });
-            }
-            // Create user object
-            var user = {};
-            user.username = doc.name;
-            user.email = doc.email;
-
-            return done(err, user);
-        });
-
+        return done(null, {});
     });
 
     // Passport session setup.
@@ -72,45 +56,13 @@ module.exports = function (app) {
     passport.use(new LocalStrategy(
         function (username, password, done) {
 
-            // matches uppercase / lowercase
-            var usernameRegex = new RegExp(username, 'i');
-            User.findOne({ email: usernameRegex }, function (err, doc) {
-
-                var hashedPassword = "";
-                if (doc && doc.password) {
-                    hashedPassword = doc.password;
-                }
-                console.log('================================ LOGIN');
-                console.log('= filename      : ', __filename);
-                console.log("= username      : ", username);
-                console.log("= verify        : ", passwordHash.verify(password, hashedPassword));
-
-                // Verify given password (or empty string) with stored password
-                // @see https://github.com/davidwood/node-password-hash/blob/master/README.md
-                if (password === "" || !passwordHash.verify(password, hashedPassword)) {
-                    console.log("= result        :  Invalid password");
-                    console.log("= password      :  " + password + " (try the default password)");
-                    console.log('================================ <<<<<');
-                    doc = {};
-                    return done(err);
-                }
-
-                if (err) {
-                    console.log("= result        :  Error (see below)");
-                    console.log('= err ', err);
-                    console.log('================================ <<<<<');
-                    return done(err);
-                }
-                if (!doc) {
-                    console.log("= result        :  Invalid username");
-                    console.log('================================ <<<<<');
-                    return done(null, false, { message: 'Invalid username.' });
-                }
-
-                console.log("= result        :  Success!");
-                console.log('================================ <<<<<');
+            if (username === "admin" && password === "admin") {
+                var doc = {};
                 return done(null, doc);
-            });
+            } else {
+                return done(err);
+            }
+
         }
     ));
 

@@ -23,13 +23,8 @@ mongoose.connect(config.db);
 
 // Bootstrap models
 /**
- * We need the model if we want to validate username & password against the database
+ * Not needed to start
  */
-var models_path = __dirname + '/app/models'
-    , model_files = fs.readdirSync(models_path);
-model_files.forEach(function (file) {
-    require(models_path + '/' + file);
-})
 
 var app = express();
 app.configure(function () {

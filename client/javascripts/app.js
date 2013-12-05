@@ -7,4 +7,4 @@
 /**
  * @see http://docs.angularjs.org/guide/concepts
  */
-angular.module('myApp', [ 'myApp.services']);
+angular.module('myApp', []);

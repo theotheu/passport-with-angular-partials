@@ -1,13 +1,13 @@
 /**
  * Created by theotheu on 05-12-13.
  */
-function UserLoginCtrl($scope, $http, $window, usersService) {
+function UserLoginCtrl($scope, $http, $window) {
     var isVerified, partial;
 
-    usersService.users.get({action: "checkLogin"}, function (req) {
-        isVerified = req.isVerified;
-    });
-
+    /**
+     * Initial file to get the partial
+     * @returns {*}
+     */
     $scope.getPartial = function () {
 
         if (isVerified === undefined) {
@@ -36,6 +36,10 @@ function UserLoginCtrl($scope, $http, $window, usersService) {
         return partial;
     };
 
+    /**
+     * Process login and, if successful login, get new partial and redirect.
+     * @param loginForm
+     */
     $scope.login = function (loginForm) {
 
         $http({
@@ -50,7 +54,7 @@ function UserLoginCtrl($scope, $http, $window, usersService) {
                     partial = "/partials/logout.html"
                     $scope.src = partial;
                     // redirect to admin area
-                    window.location = "#/requests";
+                    window.location = "#/";
                 } else {
                     console.log('No login...');
                     window.location = "#/";
@@ -61,6 +65,9 @@ function UserLoginCtrl($scope, $http, $window, usersService) {
             });
     };
 
+    /**
+     * Process logout, then get new partial and redirect.
+     */
     $scope.logout = function () {
         console.log('logout');
 

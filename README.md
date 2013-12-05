@@ -11,7 +11,6 @@ Setup
 =====
 Installation for development
 ----------------------------
-Change directory to the workspaces directory, eg ```/home/webdev/workspaces``` where webdev is your username.
 
 Clone the repository with
 ```

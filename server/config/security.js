@@ -66,7 +66,14 @@ module.exports = function (app) {
         }
     ));
 
-    // Routes
+    /**
+     * ==============================================================
+     * ROUTES
+     * ==============================================================
+     */
+    /**
+     * GET account
+     */
     app.get('/account', ensureAuthenticated, function (req, res) {
         var retObj = {
             isVerified: true,
@@ -81,42 +88,9 @@ module.exports = function (app) {
         return res.send(retObj);
     });
 
-    app.get('/login', function (req, res) {
-        var retObj = {
-            isVerified: false,
-            meta: {
-                action: "login",
-                description: "Access is not allowed. Please login",
-                timestamp: new Date(),
-                filename: __filename,
-                sessionID: req.sessionID
-            }
-        };
-        return res.send(retObj);
-
-        //res.render('login', { user: req.user, message: req.flash('error') });
-    });
-
-    app.get("/myLogin", function (req, res) {
-        var isVerified;
-        isVerified = false;
-
-        if (req.user && req.user !== null) {
-            isVerified = true;
-        }
-
-        //
-        var retObj = {
-            meta: {action: "get myLogin",
-                timestamp: new Date(),
-                filename: __filename,
-                sessionID: req.sessionID
-            },
-            isVerified: isVerified
-        };
-        return res.send(retObj);
-    });
-
+    /**
+     * POST myLogin
+     */
     app.post('/myLogin',
         passport.authenticate('local', { failureRedirect: '/login', failureFlash: true}),
         function (req, res) {
@@ -143,36 +117,6 @@ module.exports = function (app) {
         };
         return res.send(retObj);
 
-//        res.redirect('/');
     });
-
-    // Simple route middleware to ensure user is authenticated.
-    //   Use this route middleware on any resource that needs to be protected.  If
-    //   the request is authenticated (typically via a persistent login session),
-    //   the request will proceed.  Otherwise, the user will be redirected to the
-    //   login page.
-    // Attach the method to app, so that we have it available when we need it.
-    app.ensureAuthenticated = function (req, res, next) {
-        if (req.isAuthenticated()) {
-            return next();
-        }
-
-        var retObj = {
-            isVerified: false,
-            meta: {
-                description: "You are not logged in.",
-                function: "app.ensureAuthenticated",
-                timestamp: new Date(),
-                filename: __filename
-            }
-        };
-        try {
-            return res.send(retObj);
-        } catch (err) {
-            console.log(err);
-        }
-
-    }
-
 
 }

@@ -2,8 +2,7 @@
  * Created by theotheu on 05-12-13.
  */
 module.exports = function (app) {
-    var mongoose = require('mongoose')
-        , passport = require('passport')
+    var passport = require('passport')
         , flash = require('connect-flash')
         , LocalStrategy = require('passport-local').Strategy;
 
@@ -25,7 +24,7 @@ module.exports = function (app) {
     }
 
     passport.deserializeUser(function (id, done) {
-        return done(null, {});
+        return done(null, {p: 1});
     });
 
     // Passport session setup.
@@ -55,14 +54,13 @@ module.exports = function (app) {
     // @see http://passportjs.org/guide/username-password/
     passport.use(new LocalStrategy(
         function (username, password, done) {
-
             if (username === "admin" && password === "admin") {
                 var doc = {};
                 return done(null, doc);
             } else {
+                err = {};
                 return done(err);
             }
-
         }
     ));
 
@@ -79,7 +77,7 @@ module.exports = function (app) {
             isVerified: true,
             user: req.user,
             meta: {
-                action: "account",
+                action: "GET /account",
                 timestamp: new Date(),
                 filename: __filename,
                 sessionID: req.sessionID
@@ -96,7 +94,7 @@ module.exports = function (app) {
         function (req, res) {
 
             var retObj = {
-                meta: {action: "post myLogin...",
+                meta: {action: "POST /login",
                     timestamp: new Date(),
                     filename: __filename,
                     sessionID: req.sessionID
@@ -114,7 +112,9 @@ module.exports = function (app) {
         var retObj = {
             isVerified: false,
             meta: {
+                action: "GET /logout",
                 description: "You have successfully logged out.",
+                filename: __filename,
                 timestamp: new Date()
             }
         };

@@ -56,10 +56,8 @@ function UserLoginCtrl($scope, $http, $window) {
                     // redirect to admin area
                     window.location = "#/";
                 } else {
-                    console.log('No login...');
                     window.location = "#/";
                     $scope.msg="No valid email or password."
-
 
                 }
             });

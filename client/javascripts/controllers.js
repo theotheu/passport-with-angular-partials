@@ -44,7 +44,7 @@ function UserLoginCtrl($scope, $http, $window) {
 
         $http({
             method: "POST",
-            url: "/myLogin",
+            url: "/login",
             data: {"username": loginForm.username, "password": loginForm.password}
         }).success(function (data) {
                 isVerified = data.isVerified;

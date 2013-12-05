@@ -91,7 +91,7 @@ module.exports = function (app) {
     /**
      * POST myLogin
      */
-    app.post('/myLogin',
+    app.post('/login',
         passport.authenticate('local', { failureRedirect: '/login', failureFlash: true}),
         function (req, res) {
 
@@ -106,6 +106,9 @@ module.exports = function (app) {
             return res.send(retObj);
         });
 
+    /**
+     * GET logout
+     */
     app.get('/logout', function (req, res) {
         req.logout();
         var retObj = {

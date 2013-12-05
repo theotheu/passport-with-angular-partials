@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html data-ng-app="myApp">
+<head>
+    <title>Hello and welcome!</title>
+</head>
+<body>
+<h1>Hello and welcome!</h1>
+
+<!-- login/logout form -->
+<div data-ng-controller="UserLoginCtrl" data-ng-include data-src="getPartial()"></div>
+
+
+<!-- Lib -->
+<!-- Retrieved from http://code.angularjs.org/1.1.5/ -->
+<script src="./javascripts/lib/angular.min.js"></script>
+<script src="./javascripts/lib/angular-resource.min.js"></script>
+
+<!-- App -->
+<script src="./javascripts/app.js"></script>
+<script src="./javascripts/controllers.js"></script>
+<script src="./javascripts/services.js"></script>
+
+
+</body>
+</html>

@@ -58,14 +58,6 @@ cd ~/workspaces/passportDemo/server
 npm install
 ```
 
-Import users
-------------
-Go to directory ~/workspaces/passportDemo/data
-
-```sh
-mongoimport -db p3000 --collection users --file users.js
-```
-
 supervisor
 ----------
 Make sure you have supervisor installed - with the global option

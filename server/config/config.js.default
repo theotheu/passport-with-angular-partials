@@ -4,10 +4,7 @@
 module.exports = {
     development: {
         db: 'mongodb://localhost/p123456', // change p123456 with your database
-        port: 3000,                        // change 3000 with your port number
-        mailTo: "you@example.com",         // use your email address
-        AccessControlAllowMethods: "GET,PUT,POST,DELETE",
-        allowedDomains: "*"
+        port: 3000                         // change 3000 with your port number
     }, test: {
 
     }, production: {

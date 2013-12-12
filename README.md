@@ -5,8 +5,6 @@ This demo shows how to use passport.js with angular partials.
 Everything that is not needed, is left out. You cannot just copy 'n paste this into your project.
 
 
-
-
 Setup
 =====
 Installation for development

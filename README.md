@@ -20,6 +20,12 @@ Go to the working directory
 cd ~/workspaces/passport-with-partialsDemo
 ```
 
+Import seed
+```
+mongorestore --collection users --db p123456 ~/workspaces/passport-with-partialsDemo/data/p123456/users.bson
+mongorestore --collection users --db p123456 ~/workspaces/passport-with-partialsDemo/data/p123456/users.metadata.json
+```
+
 Configuration
 ----------
 Copy ```config.js.default``` to ```config.js```.

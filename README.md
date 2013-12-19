@@ -12,19 +12,19 @@ Installation for development
 
 Clone the repository with
 ```
-git clone https://github.com/theotheu/passport-with-angular-partials.git ~/workspaces/passportDemo
+git clone https://github.com/theotheu/passport-with-angular-partials.git ~/workspaces/file-uploadDemo
 ```
 
 Go to the working directory
 ```
-cd ~/workspaces/passportDemo
+cd ~/workspaces/file-uploadDemo
 ```
 
 Configuration
 ----------
 Copy ```config.js.default``` to ```config.js```.
 ```sh
-cp ~/workspaces/passportDemo/server/config/config.js.default ~/workspaces/passportDemo/server/config/config.js
+cp ~/workspaces/file-uploadDemo/server/config/config.js.default ~/workspaces/file-uploadDemo/server/config/config.js
 ```
 
 Change the database, port and emailaddress.
@@ -52,7 +52,7 @@ The archive is without the node modules.
 
 Install with
 ```sh
-cd ~/workspaces/passportDemo/server
+cd ~/workspaces/file-uploadDemo/server
 npm install
 ```
 
@@ -73,8 +73,7 @@ Instructions to prepare a deployment
 ===================================
 
 * Verify that you have a explanatory README.md
-* Make an export of your data with mongodump ```mongodump --collection collection --db test``` (see http://docs.mongodb.org/v2.2/reference/mongodump/)
+* Make an export of your data with mongodump ```mongodump --collection collection --db test --out ~/workspaces/file-uploadDemo/data``` (see http://docs.mongodb.org/v2.2/reference/mongodump/)
 * Create in your repository a directory ```data``` where you put your export, with import instructions.
 * Push the repository
-
 *

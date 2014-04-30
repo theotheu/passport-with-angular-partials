@@ -22,9 +22,13 @@ cd ~/workspaces/passport-with-partialsDemo
 
 Import seed
 ```
-mongorestore --collection users --db p123456 ~/workspaces/passport-with-partialsDemo/data/p123456/users.bson
-mongorestore --collection users --db p123456 ~/workspaces/passport-with-partialsDemo/data/p123456/users.metadata.json
-```
+mongorestore -d p123456 ~/workspaces/passport-with-partialsDemo/data/p123456/
+
+Set environment
+---------------
+Set the environment variable for development (default), test or production
+
+```export NODE_ENV=development``````
 
 Configuration
 ----------
